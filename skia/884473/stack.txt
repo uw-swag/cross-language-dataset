@@ -1,0 +1,10 @@
+==29061==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x611000000dc0 at pc 0x000001ed9eac bp 0x7ffd4c08f630 sp 0x7ffd4c08f628
+WRITE of size 1 at 0x611000000dc0 thread T0
+    #0 0x1ed9eab in void (anonymous namespace)::PlanGauss::Scan::blur<unsigned char*>(unsigned char*, unsigned char*, unsigned char*, int, unsigned char*) const /home/monkie/skia-latest/out/asan/../../src/core/SkMaskBlurFilter.cpp:150:22
+    #1 0x1ed19bb in SkMaskBlurFilter::blur(SkMask const&, SkMask*) const /home/monkie/skia-latest/out/asan/../../src/core/SkMaskBlurFilter.cpp:1044:15
+    #2 0x1e0639e in SkBlurMask::BoxBlur(SkMask*, SkMask const&, float, SkBlurStyle, SkIPoint*) /home/monkie/skia-latest/out/asan/../../src/core/SkBlurMask.cpp:133:40
+    #3 0x78ef70 in SkBlurMaskFilterImpl::filterMask(SkMask*, SkMask const&, SkMatrix const&, SkIPoint*) const /home/monkie/skia-latest/out/asan/../../src/core/SkBlurMF.cpp:290:12
+    #4 0x785f25 in SkBitmap::extractAlpha(SkBitmap*, SkPaint const*, SkBitmap::Allocator*, SkIPoint*) const /home/monkie/skia-latest/out/asan/../../src/core/SkBitmap.cpp:578:26
+    #5 0x77e0ef in main /home/monkie/skia-latest/out/asan/../../tools/test.cpp:15:8
+    #6 0x7fe3d6cf382f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #7 0x689ff8 in _start (/home/monkie/skia-latest/out/asan/test+0x689ff8)

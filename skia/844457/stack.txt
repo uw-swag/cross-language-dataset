@@ -1,0 +1,21 @@
+==18863==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6140000021d0 at pc 0x0000018df91a bp 0x7ffcdc7708d0 sp 0x7ffcdc7708c8
+WRITE of size 4 at 0x6140000021d0 thread T0
+    #0 0x18df919 in (anonymous namespace)::DstTraits<unsigned int, ((anonymous namespace)::ApplyPremul)0>::store((anonymous namespace)::SkNx<4, float> const&, unsigned int*, (anonymous namespace)::SkNx<4, float> const&) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/shaders/gradients/Sk4fGradientPriv.h:73:18
+    #1 0x18df919 in void (anonymous namespace)::ramp<unsigned int, ((anonymous namespace)::ApplyPremul)0>((anonymous namespace)::SkNx<4, float> const&, (anonymous namespace)::SkNx<4, float> const&, unsigned int*, int, (anonymous namespace)::SkNx<4, float> const&, (anonymous namespace)::SkNx<4, float> const&) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/shaders/gradients/Sk4fLinearGradient.cpp:45
+    #2 0x18d3eb1 in void SkLinearGradient::LinearGradient4fContext::shadeSpanInternal<unsigned int, ((anonymous namespace)::ApplyPremul)0, (SkShader::TileMode)0>(int, int, unsigned int*, int, float, float) const /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/shaders/gradients/Sk4fLinearGradient.cpp:256:13
+    #3 0x18d3eb1 in void SkLinearGradient::LinearGradient4fContext::shadePremulSpan<unsigned int, ((anonymous namespace)::ApplyPremul)0>(int, int, unsigned int*, int, float, float) const /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/shaders/gradients/Sk4fLinearGradient.cpp:209
+    #4 0x18d3eb1 in SkLinearGradient::LinearGradient4fContext::shadeSpan(int, int, unsigned int*, int) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/shaders/gradients/Sk4fLinearGradient.cpp:181
+    #5 0x167213d in SkARGB32_Shader_Blitter::blitH(int, int, int) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkBlitter_ARGB32.cpp:377:25
+    #6 0xd1cf47 in walk_convex_edges(SkEdge*, SkPath::FillType, SkBlitter*, int, int, void (*)(SkBlitter*, int, bool)) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkScan_Path.cpp:261:30
+    #7 0xd1b364 in sk_fill_path(SkPath const&, SkIRect const&, SkBlitter*, int, int, int, bool) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkScan_Path.cpp:471:9
+    #8 0xd1e625 in SkScan::FillPath(SkPath const&, SkRegion const&, SkBlitter*) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkScan_Path.cpp:656:9
+    #9 0xd0c39a in SkScan::FillPath(SkPath const&, SkRasterClip const&, SkBlitter*) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkScan_AntiPath.cpp:827:9
+    #10 0xb9ae3d in SkDraw::drawDevPath(SkPath const&, SkPaint const&, bool, SkBlitter*, bool, SkInitOnceData*) const /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkDraw.cpp:1024:9
+    #11 0xb9c046 in SkDraw::drawPath(SkPath const&, SkPaint const&, SkMatrix const*, bool, bool, SkBlitter*, SkInitOnceData*) const /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkDraw.cpp:1141:11
+    #12 0x164e60a in SkDraw::drawPath(SkPath const&, SkPaint const&, SkMatrix const*, bool) const /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkDraw.h:58:15
+    #13 0x164e60a in SkBitmapDevice::drawPath(SkPath const&, SkPaint const&, SkMatrix const*, bool) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkBitmapDevice.cpp:411
+    #14 0xb44c54 in SkCanvas::onDrawPath(SkPath const&, SkPaint const&) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkCanvas.cpp:2145:23
+    #15 0xb3bf59 in SkCanvas::drawPath(SkPath const&, SkPaint const&) /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../src/core/SkCanvas.cpp:1708:11
+    #16 0x86021e in main /usr/local/google/home/ifratric/p0/skia/skia/out/asan/../../example/SkiaSDLExample.cpp:37:11
+    #17 0x7fd0eb3672b0 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x202b0)
+    #18 0x770659 in _start (/usr/local/google/home/ifratric/p0/skia/skia/out/asan/SkiaSDLExample+0x770659)

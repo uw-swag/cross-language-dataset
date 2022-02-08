@@ -1,0 +1,16 @@
+==32099==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000cf0 at pc 0x000000e80574 bp 0x7ffcd82a9550 sp 0x7ffcd82a9548
+READ of size 4 at 0x602000000cf0 thread T0
+    #0 0xe80573 in Fetch third_party/skia/src/effects/SkLightingImageFilter.cpp:203:20
+    #1 0xe80573 in lightBitmap<SpecularLightingType, SkSpotLight, DecalPixelFetcher> third_party/skia/src/effects/SkLightingImageFilter.cpp:226
+    #2 0xe80573 in lightBitmap<SpecularLightingType, SkSpotLight> third_party/skia/src/effects/SkLightingImageFilter.cpp:311
+    #3 0xe80573 in SkSpecularLightingImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkLightingImageFilter.cpp:1516
+    #4 0x69ad49 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:216:40
+    #5 0xc5f1db in SkBitmapDevice::drawSpecial(SkSpecialImage*, int, int, SkPaint const&) third_party/skia/src/core/SkBitmapDevice.cpp:406:49
+    #6 0x55ce24 in SkCanvas::internalDrawDevice(SkBaseDevice*, int, int, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:1330:25
+    #7 0x5589c1 in SkCanvas::internalRestore() third_party/skia/src/core/SkCanvas.cpp:1221:19
+    #8 0x5752d9 in ~AutoDrawLooper third_party/skia/src/core/SkCanvas.cpp:506:22
+    #9 0x5752d9 in SkCanvas::onDrawBitmap(SkBitmap const&, float, float, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:2331
+    #10 0x4f81d3 in RunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:46:13
+    #11 0x4f81d3 in ReadAndRunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:65
+    #12 0x4f81d3 in main skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:84
+    #13 0x7f487461682f in __libc_start_main /build/glibc-9tT8Do/glibc-2.23/csu/../csu/libc-start.c:291

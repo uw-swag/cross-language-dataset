@@ -1,0 +1,6 @@
+Crash Type: Stack-buffer-overflow READ 4
+Crash Address: 0x7fdf04cdb191
+Crash State:
+  SkDescriptor::findEntry
+  auto_descriptor_from_desc
+  SkStrikeClient::readStrikeData

@@ -1,0 +1,20 @@
+==139872==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffc5c8950d4 at pc 0x00000135512e bp 0x7ffc5c894f30 sp 0x7ffc5c894f28
+WRITE of size 1 at 0x7ffc5c8950d4 thread T0
+    #0 0x135512d in SkAlphaRuns::Break(short*, unsigned char*, int, int) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkAntiRun.h:154:26
+    #1 0x135512d in SkRgnClipBlitter::blitAntiH(int, int, unsigned char const*, short const*) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkBlitter.cpp:615
+    #2 0xac437f in SkBlitter::blitAntiH2(int, int, unsigned int, unsigned int) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkBlitter.h:96:15
+    #3 0x1465fa4 in blit_trapezoid_row(AdditiveBlitter*, int, int, int, int, int, int, int, unsigned char, unsigned char*, bool, bool, bool) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkScan_AAAPath.cpp
+    #4 0x1465fa4 in aaa_walk_convex_edges(SkAnalyticEdge*, AdditiveBlitter*, int, int, int, int, bool) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkScan_AAAPath.cpp:1187
+    #5 0x1465fa4 in aaa_fill_path(SkPath const&, SkIRect const&, AdditiveBlitter*, int, int, bool, bool, bool) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkScan_AAAPath.cpp:1669
+    #6 0x1465fa4 in SkScan::AAAFillPath(SkPath const&, SkBlitter*, SkIRect const&, SkIRect const&, bool) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkScan_AAAPath.cpp:1713
+    #7 0xad5687 in SkScan::AntiFillPath(SkPath const&, SkRegion const&, SkBlitter*, bool, SkDAARecord*) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkScan_AntiPath.cpp:844:9
+    #8 0xad6cf6 in SkScan::AntiFillPath(SkPath const&, SkRasterClip const&, SkBlitter*, SkDAARecord*) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkScan_AntiPath.cpp:883:9
+    #9 0x9c5902 in SkDraw::drawDevPath(SkPath const&, SkPaint const&, bool, SkBlitter*, bool) const /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkDraw.cpp:1018:5
+    #10 0x9c64b9 in SkDraw::drawPath(SkPath const&, SkPaint const&, SkMatrix const*, bool, bool, SkBlitter*) const /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkDraw.cpp:1101:11
+    #11 0x13478f3 in SkDraw::drawPath(SkPath const&, SkPaint const&, SkMatrix const*, bool) const /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkDraw.h:56:15
+    #12 0x13478f3 in SkBitmapDevice::drawPath(SkPath const&, SkPaint const&, bool) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkBitmapDevice.cpp:407
+    #13 0x98e9ce in SkCanvas::onDrawPath(SkPath const&, SkPaint const&) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkCanvas.cpp:2141:23
+    #14 0x983f71 in SkCanvas::drawPath(SkPath const&, SkPaint const&) /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../src/core/SkCanvas.cpp:1694:11
+    #15 0x69add0 in main /usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/../../example/SkiaSDLExample.cpp:63:10
+    #16 0x7ff1044112b0 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x202b0)
+    #17 0x5ab0e9 in _start (/usr/local/google/home/ifratric/p0/skia/skia20181029/out/asan/SkiaSDLExample+0x5ab0e9)

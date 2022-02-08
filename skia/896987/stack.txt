@@ -1,0 +1,16 @@
+==7604==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61a000000b04 at pc 0x00000073d4b5 bp 0x7ffdab9a0bd0 sp 0x7ffdab9a0380
+WRITE of size 100 at 0x61a000000b04 thread T0
+    #0 0x73d4b4 in __asan_memcpy /tmp/tmpFq_AZD/llvm/out/../projects/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cc:23
+    #1 0x1daf662 in SkGenerateDistanceFieldFromA8Image(unsigned char*, unsigned char const*, int, int, unsigned long) /home/monkie/skia/out/asan/../../src/core/SkDistanceFieldGen.cpp:484:9
+    #2 0x122adb3 in GrSDFMaskFilterImpl::filterMask(SkMask*, SkMask const&, SkMatrix const&, SkIPoint*) const /home/monkie/skia/out/asan/../../src/gpu/text/GrSDFMaskFilter.cpp:68:16
+    #3 0x7e78cf in SkDraw::drawDevMask(SkMask const&, SkPaint const&) const /home/monkie/skia/out/asan/../../src/core/SkDraw.cpp:848:40
+    #4 0x7eb141 in SkDraw::drawBitmapAsMask(SkBitmap const&, SkPaint const&) const /home/monkie/skia/out/asan/../../src/core/SkDraw.cpp:1122:15
+    #5 0x7ecf8d in SkDraw::drawBitmap(SkBitmap const&, SkMatrix const&, SkRect const*, SkPaint const&) const /home/monkie/skia/out/asan/../../src/core/SkDraw.cpp:1255:14
+    #6 0x1d210ba in SkBitmapDevice::drawBitmap(SkBitmap const&, SkMatrix const&, SkRect const*, SkPaint const&) /home/monkie/skia/out/asan/../../src/core/SkBitmapDevice.cpp:440:5
+    #7 0x1d21cc3 in SkBitmapDevice::drawBitmapRect(SkBitmap const&, SkRect const*, SkRect const&, SkPaint const&, SkCanvas::SrcRectConstraint) /home/monkie/skia/out/asan/../../src/core/SkBitmapDevice.cpp:541:19
+    #8 0x7a864c in SkCanvas::internalDrawBitmapRect(SkBitmap const&, SkRect const*, SkRect const&, SkPaint const*, SkCanvas::SrcRectConstraint) /home/monkie/skia/out/asan/../../src/core/SkCanvas.cpp:2330:23
+    #9 0x7a888c in SkCanvas::onDrawBitmapRect(SkBitmap const&, SkRect const*, SkRect const&, SkPaint const*, SkCanvas::SrcRectConstraint) /home/monkie/skia/out/asan/../../src/core/SkCanvas.cpp:2339:11
+    #10 0x79e8ca in SkCanvas::drawBitmapRect(SkBitmap const&, SkRect const&, SkRect const&, SkPaint const*, SkCanvas::SrcRectConstraint) /home/monkie/skia/out/asan/../../src/core/SkCanvas.cpp:1822:11
+    #11 0x76fce1 in main /home/monkie/skia/out/asan/../../tools/test.cpp:20:8
+    #12 0x7fc5361c582f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #13 0x67b628 in _start (/home/monkie/skia/out/asan/test+0x67b628)

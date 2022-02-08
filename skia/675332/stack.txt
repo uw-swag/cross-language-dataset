@@ -1,0 +1,50 @@
+==23992==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6030000003f0 at pc 0x000000f5806d bp 0x7fff7f065f90 sp 0x7fff7f065f88
+READ of size 4 at 0x6030000003f0 thread T0
+    #0 0xf5806c in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:233:33
+    #1 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #2 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #3 0xf556d3 in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:136:39
+    #4 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #5 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #6 0xf556d3 in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:136:39
+    #7 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #8 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #9 0xf556d3 in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:136:39
+    #10 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #11 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #12 0xf556d3 in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:136:39
+    #13 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #14 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #15 0xf556d3 in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:136:39
+    #16 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #17 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #18 0xfc59f8 in (anonymous namespace)::SkSpecularLightingImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkLightingImageFilter.cpp:1415:39
+    #19 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #20 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #21 0x100279d in SkOffsetImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkOffsetImageFilter.cpp:32:39
+    #22 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #23 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #24 0xf556d3 in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:136:39
+    #25 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #26 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #27 0xf556d3 in SkAlphaThresholdFilterImpl::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkAlphaThresholdFilter.cpp:136:39
+    #28 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #29 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #30 0x100279d in SkOffsetImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkOffsetImageFilter.cpp:32:39
+    #31 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #32 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #33 0x102214b in SkTileImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkTileImageFilter.cpp:46:39
+    #34 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #35 0x63e3b4 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:462:41
+    #36 0xfe3da7 in SkMagnifierImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkMagnifierImageFilter.cpp:284:39
+    #37 0x637f59 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:215:40
+    #38 0xc6d922 in SkBitmapDevice::drawSpecial(SkDraw const&, SkSpecialImage*, int, int, SkPaint const&) third_party/skia/src/core/SkBitmapDevice.cpp:400:49
+    #39 0x597523 in SkCanvas::internalDrawDevice(SkBaseDevice*, int, int, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:1426:25
+    #40 0x592387 in SkCanvas::internalRestore() third_party/skia/src/core/SkCanvas.cpp:1316:19
+    #41 0x5b1ecb in ~AutoDrawLooper third_party/skia/src/core/SkCanvas.cpp:515:22
+    #42 0x5b1ecb in SkCanvas::onDrawBitmap(SkBitmap const&, float, float, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:2445
+    #43 0x4f5eea in RunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:46:13
+    #44 0x4f5eea in ReadAndRunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:65
+    #45 0x4f5eea in main skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:84
+    #46 0x7f732211382f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+

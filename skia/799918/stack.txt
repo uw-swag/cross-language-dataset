@@ -1,0 +1,22 @@
+==24057==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fef05f02520 at pc 0x0000005f0399 bp 0x7ffd164d5f20 sp 0x7ffd164d56d0
+READ of size 104 at 0x7fef05f02520 thread T0
+    #0 0x5f0398 in __asan_memcpy /b/build/slave/linux_upload_clang/build/src/third_party/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cc:23:3
+    #1 0xd1a94d in SkPackBits::Unpack8(unsigned char const*, unsigned long, unsigned char*, unsigned long) src/third_party/skia/src/effects/SkPackBits.cpp:100:13
+    #2 0xd158ee in SkTable_ColorFilter::CreateProc(SkReadBuffer&) src/third_party/skia/src/effects/SkTableColorFilter.cpp:208:27
+    #3 0xaa3b79 in SkReadBuffer::readFlattenable(SkFlattenable::Type) src/third_party/skia/src/core/SkReadBuffer.cpp:407:15
+    #4 0xd7ec01 in readFlattenable<SkColorFilter> src/third_party/skia/src/core/SkReadBuffer.h:141:35
+    #5 0xd7ec01 in readColorFilter src/third_party/skia/src/core/SkReadBuffer.h:143
+    #6 0xd7ec01 in SkColorFilterImageFilter::CreateProc(SkReadBuffer&) src/third_party/skia/src/effects/SkColorFilterImageFilter.cpp:53
+    #7 0xaa3b79 in SkReadBuffer::readFlattenable(SkFlattenable::Type) src/third_party/skia/src/core/SkReadBuffer.cpp:407:15
+    #8 0x9bf75e in readFlattenable<SkImageFilter> src/third_party/skia/src/core/SkReadBuffer.h:141:35
+    #9 0x9bf75e in readImageFilter src/third_party/skia/src/core/SkReadBuffer.h:145
+    #10 0x9bf75e in SkImageFilter::Common::unflatten(SkReadBuffer&, int) src/third_party/skia/src/core/SkImageFilter.cpp:130
+    #11 0xcfadfa in SkTileImageFilter::CreateProc(SkReadBuffer&) src/third_party/skia/src/effects/SkTileImageFilter.cpp:147:5
+    #12 0xaa3b79 in SkReadBuffer::readFlattenable(SkFlattenable::Type) src/third_party/skia/src/core/SkReadBuffer.cpp:407:15
+    #13 0x9bacd3 in SkFlattenable::Deserialize(SkFlattenable::Type, void const*, unsigned long, SkDeserialProcs const*) src/third_party/skia/src/core/SkFlattenable.cpp:145:40
+    #14 0x9baf53 in Deserialize src/third_party/skia/include/core/SkImageFilter.h:241:5
+    #15 0x9baf53 in SkValidatingDeserializeImageFilter(void const*, unsigned long) src/third_party/skia/src/core/SkFlattenableSerialization.cpp:22
+    #16 0x61efc0 in RunTestCase src/skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:33:38
+    #17 0x61efc0 in ReadAndRunTestCase src/skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:67
+    #18 0x61efc0 in main src/skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:87
+    #19 0x7fef091dd82f in __libc_start_main /build/glibc-bfm8X4/glibc-2.23/csu/../csu/libc-start.c:291

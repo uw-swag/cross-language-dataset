@@ -1,0 +1,17 @@
+==23559==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x7f932775c852 at pc 0x00000066a772 bp 0x7fffe00d5300 sp 0x7fffe00d4ab0
+READ of size 6 at 0x7f932775c852 thread T0
+    #0 0x66a771 in __asan_memcpy /home/brian/final/llvm.src/projects/compiler-rt/lib/asan/asan_interceptors.cc:466:3
+    #1 0xc26687 in sample6(void*, unsigned char const*, int, int, int, int, unsigned int const*) /mnt/data/skia/out/Release-asan/../../src/codec/SkSwizzler.cpp:59:9
+    #2 0xc2ccf0 in SkSwizzler::swizzle(void*, unsigned char const*) /mnt/data/skia/out/Release-asan/../../src/codec/SkSwizzler.cpp:1233:5
+    #3 0x12f379f in SkJpegCodec::readRows(SkImageInfo const&, void*, unsigned long, int, SkCodec::Options const&) /mnt/data/skia/out/Release-asan/../../src/codec/SkJpegCodec.cpp:540:24
+    #4 0x12f5d0d in SkJpegCodec::onGetScanlines(void*, int, unsigned long) /mnt/data/skia/out/Release-asan/../../src/codec/SkJpegCodec.cpp:753:22
+    #5 0xc18670 in SkCodec::getScanlines(void*, int, unsigned long) /mnt/data/skia/out/Release-asan/../../src/codec/SkCodec.cpp:517:36
+    #6 0xc21c61 in SkSampledCodec::sampledDecode(SkImageInfo const&, void*, unsigned long, SkAndroidCodec::AndroidOptions const&) /mnt/data/skia/out/Release-asan/../../src/codec/SkSampledCodec.cpp:290:41
+    #7 0xc20812 in SkSampledCodec::onGetAndroidPixels(SkImageInfo const&, void*, unsigned long, SkAndroidCodec::AndroidOptions const&) /mnt/data/skia/out/Release-asan/../../src/codec/SkSampledCodec.cpp:87:22
+    #8 0xc123b8 in SkAndroidCodec::getAndroidPixels(SkImageInfo const&, void*, unsigned long, SkAndroidCodec::AndroidOptions const*) /mnt/data/skia/out/Release-asan/../../src/codec/SkAndroidCodec.cpp:393:22
+    #9 0x76cadb in FuzzAndroidCodec(sk_sp<SkData>, unsigned char) /mnt/data/skia/out/Release-asan/../../fuzz/oss_fuzz/FuzzAndroidCodec.cpp:33:26
+    #10 0x7092e3 in fuzz_android_codec(sk_sp<SkData>) /mnt/data/skia/out/Release-asan/../../fuzz/FuzzMain.cpp:385:9
+    #11 0x7092e3 in fuzz_file(SkString, SkString) /mnt/data/skia/out/Release-asan/../../fuzz/FuzzMain.cpp:143
+    #12 0x707343 in main /mnt/data/skia/out/Release-asan/../../fuzz/FuzzMain.cpp:110:16
+    #13 0x7f932c3cb82f in __libc_start_main /build/glibc-Cl5G7W/glibc-2.23/csu/../csu/libc-start.c:291
+    #14 0x5e0148 in _start (/mnt/data/skia/out/Release-asan/fuzz+0x5e0148)

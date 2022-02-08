@@ -1,0 +1,20 @@
+==2001456==ERROR: AddressSanitizer: global-buffer-overflow on address 0x555b9e940a78 at pc 0x555b9f07119a bp 0x7fff1a8b83b0 sp 0x7fff1a8b83a8
+READ of size 8 at 0x555b9e940a78 thread T0
+    #0 0x555b9f071199 in bytesPerVertex third_party/skia/src/core/SkVertices.cpp:42:5
+    #1 0x555b9f071199 in custom_data_size third_party/skia/src/core/SkVertices.cpp:55:26
+    #2 0x555b9f071199 in SkVertices::Sizes::Sizes(SkVertices::Desc const&) third_party/skia/src/core/SkVertices.cpp:81:27
+    #3 0x555b9f073bcc in SkVertices::Decode(void const*, unsigned long) third_party/skia/src/core/SkVertices.cpp:433:11
+    #4 0x555b9f147ac4 in create_vertices_from_buffer(SkReadBuffer&) third_party/skia/src/core/SkPictureData.cpp:379:19
+    #5 0x555b9f147602 in bool new_array_from_buffer<SkVertices const, SkVertices>(SkReadBuffer&, unsigned int, SkTArray<sk_sp<SkVertices const>, false>&, sk_sp<SkVertices> (*)(SkReadBuffer&)) third_party/skia/src/core/SkPictureData.cpp:398:20
+    #6 0x555b9f146b11 in SkPictureData::parseBufferTag(SkReadBuffer&, unsigned int, unsigned int) third_party/skia/src/core/SkPictureData.cpp:443:13
+    #7 0x555b9f148a7e in parseBuffer third_party/skia/src/core/SkPictureData.cpp:525:15
+    #8 0x555b9f148a7e in SkPictureData::CreateFromBuffer(SkReadBuffer&, SkPictInfo const&) third_party/skia/src/core/SkPictureData.cpp:494:16
+    #9 0x555b9f141407 in SkPicturePriv::MakeFromBuffer(SkReadBuffer&) third_party/skia/src/core/SkPicture.cpp:213:40
+    #10 0x555b9f21f10a in (anonymous namespace)::SkPictureImageFilterImpl::CreateProc(SkReadBuffer&) third_party/skia/src/effects/imagefilters/SkPictureImageFilter.cpp:86:19
+    #11 0x555b9ef462cd in SkReadBuffer::readFlattenable(SkFlattenable::Type) third_party/skia/src/core/SkReadBuffer.cpp:428:15
+    #12 0x555b9edf25d7 in SkFlattenable::Deserialize(SkFlattenable::Type, void const*, unsigned long, SkDeserialProcs const*) third_party/skia/src/core/SkFlattenable.cpp:144:40
+    #13 0x555b9ecfe9f8 in Deserialize third_party/skia/include/core/SkImageFilter.h:149:17
+    #14 0x555b9ecfe9f8 in RunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:32:38
+    #15 0x555b9ecfe9f8 in ReadAndRunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:66:3
+    #16 0x555b9ecfe9f8 in main skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:86:10
+    #17 0x7f38771a11a2 in __libc_start_main (/lib64/libc.so.6+0x271a2)

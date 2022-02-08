@@ -1,0 +1,6 @@
+Crash Type: Heap-buffer-overflow WRITE {*}
+Crash Address: 0xf14178c0
+Crash State:
+  SkScalerContext_FreeType_Base::generateGlyphImage
+  SkScalerContext_FreeType::generateImage
+  SkScalerContext::getImage

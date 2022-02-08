@@ -1,0 +1,28 @@
+==22180==ERROR: AddressSanitizer: global-buffer-overflow on address 0x7f1df8421316 at pc 0x7f1df84239b3 bp 0x7ffe3acdb150 sp 0x7ffe3acdb148
+READ of size 1 at 0x7f1df8421316 thread T0 (chrome)
+    #0 0x7f1df84239b2 in SkColorTypeBytesPerPixel third_party/skia/include/core/SkImageInfo.h:104:12
+    #1 0x7f1df84239b2 in bytesPerPixel third_party/skia/include/core/SkImageInfo.h:269
+    #2 0x7f1df84239b2 in minRowBytes64 third_party/skia/include/core/SkImageInfo.h:274
+    #3 0x7f1df84239b2 in minRowBytes third_party/skia/include/core/SkImageInfo.h:278
+    #4 0x7f1df84239b2 in tryAllocPixels third_party/skia/include/core/SkBitmap.h:247
+    #5 0x7f1df84239b2 in InitSkBitmapFromData ui/gfx/ipc/skia/gfx_skia_param_traits.cc:41
+    #6 0x7f1df84239b2 in IPC::ParamTraits<SkBitmap>::Read(base::Pickle const*, base::PickleIterator*, SkBitmap*) ui/gfx/ipc/skia/gfx_skia_param_traits.cc:86
+    #7 0x7f1dfbe7b025 in ReadParam<SkBitmap> ipc/ipc_message_utils.h:109:10
+    #8 0x7f1dfbe7b025 in Read ipc/ipc_message_utils.h:655
+    #9 0x7f1dfbe7b025 in IPC::TupleParamTraitsHelper<std::__1::tuple<content::DropData, blink::WebDragOperation, SkBitmap, gfx::Vector2d, content::DragEventSourceInfo>, 1, 5>::Read(base::Pickle const*, base::PickleIterator*, std::__1::tuple<content::DropData, blink::WebDragOperation, SkBitmap, gfx::Vector2d, content::DragEventSourceInfo>*) ipc/ipc_message_utils.h:655
+    #10 0x7f1dfbd63b3c in Read ipc/ipc_message_utils.h:655:56
+    #11 0x7f1dfbd63b3c in Read ipc/ipc_message_utils.h:688
+    #12 0x7f1dfbd63b3c in ReadParam<std::__1::tuple<content::DropData, blink::WebDragOperation, SkBitmap, gfx::Vector2d, content::DragEventSourceInfo> > ipc/ipc_message_utils.h:109
+    #13 0x7f1dfbd63b3c in IPC::MessageT<DragHostMsg_StartDragging_Meta, std::__1::tuple<content::DropData, blink::WebDragOperation, SkBitmap, gfx::Vector2d, content::DragEventSourceInfo>, void>::Read(IPC::Message const*, std::__1::tuple<content::DropData, blink::WebDragOperation, SkBitmap, gfx::Vector2d, content::DragEventSourceInfo>*) ipc/ipc_message_templates_impl.h:36
+    #14 0x7f1dfd4f4822 in bool IPC::MessageT<DragHostMsg_StartDragging_Meta, std::__1::tuple<content::DropData, blink::WebDragOperation, SkBitmap, gfx::Vector2d, content::DragEventSourceInfo>, void>::Dispatch<content::RenderWidgetHostImpl, content::RenderWidgetHostImpl, void, void (content::RenderWidgetHostImpl::*)(content::DropData const&, blink::WebDragOperation, SkBitmap const&, gfx::Vector2d const&, content::DragEventSourceInfo const&)>(IPC::Message const*, content::RenderWidgetHostImpl*, content::RenderWidgetHostImpl*, void*, void (content::RenderWidgetHostImpl::*)(content::DropData const&, blink::WebDragOperation, SkBitmap const&, gfx::Vector2d const&, content::DragEventSourceInfo const&)) ipc/ipc_message_templates.h:145:9
+    #15 0x7f1dfd4ead09 in content::RenderWidgetHostImpl::OnMessageReceived(IPC::Message const&) content/browser/renderer_host/render_widget_host_impl.cc:630:5
+    #16 0x7f1e0161a71a in IPC::ChannelProxy::Context::OnDispatchMessage(IPC::Message const&) ipc/ipc_channel_proxy.cc:320:14
+    #17 0x7f1e03c4227d in Run base/callback.h:64:12
+    #18 0x7f1e03c4227d in base::debug::TaskAnnotator::RunTask(char const*, base::PendingTask*) base/debug/task_annotator.cc:57
+    #19 0x7f1e03cdb495 in RunTask base/message_loop/incoming_task_queue.cc:130:19
+    #20 0x7f1e03cdb495 in base::MessageLoop::RunTask(base::PendingTask*) base/message_loop/message_loop.cc:394
+    #21 0x7f1e03cdca3d in DeferOrRunPendingTask base/message_loop/message_loop.cc:406:5
+    #22 0x7f1e03cdca3d in base::MessageLoop::DoWork() base/message_loop/message_loop.cc:450
+    #23 0x7f1e03d0fed6 in HandleDispatch base/message_loop/message_pump_glib.cc:267:25
+    #24 0x7f1e03d0fed6 in base::(anonymous namespace)::WorkSourceDispatch(_GSource*, int (*)(void*), void*) base/message_loop/message_pump_glib.cc:109
+    #25 0x7f1de72f7196 in g_main_context_dispatch (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x4a196)

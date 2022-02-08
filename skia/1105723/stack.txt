@@ -1,0 +1,21 @@
+==3810601==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60300000089c at pc 0x0000009d70a6 bp 0x7fff106e7240 sp 0x7fff106e6a00
+READ of size 5 at 0x60300000089c thread T0
+    #0 0x9d70a5 in strlen /tmp/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:372:5
+    #1 0xdaa795 in SkVertices::Attribute::Attribute(SkVertices::Attribute::Type, SkVertices::Attribute::Usage, char const*) /mnt/disk/skia/out/m84.asan/../../src/core/SkVertices.cpp:36:60
+    #2 0xdae795 in SkVertices::Decode(void const*, unsigned long) /mnt/disk/skia/out/m84.asan/../../src/core/SkVertices.cpp:498:20
+    #3 0xe2d3b2 in create_vertices_from_buffer(SkReadBuffer&) /mnt/disk/skia/out/m84.asan/../../src/core/SkPictureData.cpp:379:19
+    #4 0xe2d1c7 in bool new_array_from_buffer<SkVertices const, SkVertices>(SkReadBuffer&, unsigned int, SkTArray<sk_sp<SkVertices const>, false>&, sk_sp<SkVertices> (*)(SkReadBuffer&)) /mnt/disk/skia/out/m84.asan/../../src/core/SkPictureData.cpp:398:20
+    #5 0xe2cca1 in SkPictureData::parseBufferTag(SkReadBuffer&, unsigned int, unsigned int) /mnt/disk/skia/out/m84.asan/../../src/core/SkPictureData.cpp:443:13
+    #6 0xe2e016 in SkPictureData::parseBuffer(SkReadBuffer&) /mnt/disk/skia/out/m84.asan/../../src/core/SkPictureData.cpp:525:15
+    #7 0xe2df3b in SkPictureData::CreateFromBuffer(SkReadBuffer&, SkPictInfo const&) /mnt/disk/skia/out/m84.asan/../../src/core/SkPictureData.cpp:494:16
+    #8 0xe26f23 in SkPicturePriv::MakeFromBuffer(SkReadBuffer&) /mnt/disk/skia/out/m84.asan/../../src/core/SkPicture.cpp:213:40
+    #9 0xeea4ac in (anonymous namespace)::SkPictureImageFilterImpl::CreateProc(SkReadBuffer&) /mnt/disk/skia/out/m84.asan/../../src/effects/imagefilters/SkPictureImageFilter.cpp:86:19
+    #10 0xceb38a in SkReadBuffer::readFlattenable(SkFlattenable::Type) /mnt/disk/skia/out/m84.asan/../../src/core/SkReadBuffer.cpp:428:15
+    #11 0xbd631a in SkFlattenable::Deserialize(SkFlattenable::Type, void const*, unsigned long, SkDeserialProcs const*) /mnt/disk/skia/out/m84.asan/../../src/core/SkFlattenable.cpp:144:40
+    #12 0xa713fc in SkImageFilter::Deserialize(void const*, unsigned long, SkDeserialProcs const*) /mnt/disk/skia/out/m84.asan/../../include/core/SkImageFilter.h:149:17
+    #13 0xacd96e in FuzzImageFilterDeserialize(sk_sp<SkData>) /mnt/disk/skia/out/m84.asan/../../fuzz/oss_fuzz/FuzzImageFilterDeserialize.cpp:24:24
+    #14 0xa96522 in fuzz_filter_fuzz(sk_sp<SkData>) /mnt/disk/skia/out/m84.asan/../../fuzz/FuzzMain.cpp:729:5
+    #15 0xa9457f in fuzz_file(SkString, SkString) /mnt/disk/skia/out/m84.asan/../../fuzz/FuzzMain.cpp:163:9
+    #16 0xa9405c in main /mnt/disk/skia/out/m84.asan/../../fuzz/FuzzMain.cpp:114:16
+    #17 0x7fa27d3a8041 in __libc_start_main /usr/src/debug/glibc-2.31-17-gab029a2801/csu/../csu/libc-start.c:308:16
+    #18 0x9c4b4d in _start (/mnt/disk/skia/out/m84.asan/fuzz+0x9c4b4d)

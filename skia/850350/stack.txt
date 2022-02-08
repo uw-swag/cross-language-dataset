@@ -1,0 +1,49 @@
+==14542==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f92def3793e at pc 0x000000623b73 bp 0x7ffe61dc7390 sp 0x7ffe61dc7388
+WRITE of size 1 at 0x7f92def3793e thread T0
+    #0 0x623b72 in Break third_party/skia/src/core/SkAntiRun.h:154:26
+    #1 0x623b72 in SkRgnClipBlitter::blitAntiH(int, int, unsigned char const*, short const*) third_party/skia/src/core/SkBlitter.cpp:556
+    #2 0x5f5680 in SkBlitter::blitAntiH2(int, int, unsigned int, unsigned int) third_party/skia/src/core/SkBlitter.h:96:15
+    #3 0x8bbf6a in aaa_walk_convex_edges third_party/skia/src/core/SkScan_AAAPath.cpp
+    #4 0x8bbf6a in aaa_fill_path third_party/skia/src/core/SkScan_AAAPath.cpp:1670
+    #5 0x8bbf6a in SkScan::AAAFillPath(SkPath const&, SkBlitter*, SkIRect const&, SkIRect const&, bool) third_party/skia/src/core/SkScan_AAAPath.cpp:1714
+    #6 0x8e5265 in SkScan::AntiFillPath(SkPath const&, SkRegion const&, SkBlitter*, bool, SkDAARecord*) third_party/skia/src/core/SkScan_AntiPath.cpp:807:9
+    #7 0x8e6cca in SkScan::AntiFillPath(SkPath const&, SkRasterClip const&, SkBlitter*, SkDAARecord*) third_party/skia/src/core/SkScan_AntiPath.cpp:846:9
+    #8 0x6e1204 in SkDraw::drawDevPath(SkPath const&, SkPaint const&, bool, SkBlitter*, bool, SkInitOnceData*) const third_party/skia/src/core/SkDraw.cpp:1022:9
+    #9 0x6e2b4d in SkDraw::drawPath(SkPath const&, SkPaint const&, SkMatrix const*, bool, bool, SkBlitter*, SkInitOnceData*) const third_party/skia/src/core/SkDraw.cpp:1136:11
+    #10 0x6e01e8 in drawPath third_party/skia/src/core/SkDraw.h:58:15
+    #11 0x6e01e8 in draw_rect_as_path(SkDraw const&, SkRect const&, SkPaint const&, SkMatrix const*) third_party/skia/src/core/SkDraw.cpp:739
+    #12 0x6df505 in SkDraw::drawRect(SkRect const&, SkPaint const&, SkMatrix const*, SkRect const*) const third_party/skia/src/core/SkDraw.cpp:766:9
+    #13 0x6e51de in SkDraw::drawBitmap(SkBitmap const&, SkMatrix const&, SkRect const*, SkPaint const&) const third_party/skia/src/core/SkDraw.h
+    #14 0x6081cc in SkBitmapDevice::drawBitmap(SkBitmap const&, SkMatrix const&, SkRect const*, SkPaint const&) third_party/skia/src/core/SkBitmapDevice.cpp:352:5
+    #15 0x607ee4 in SkBitmapDevice::drawBitmap(SkBitmap const&, float, float, SkPaint const&) third_party/skia/src/core/SkBitmapDevice.cpp:347:11
+    #16 0x6cf45b in SkBaseDevice::drawImage(SkImage const*, float, float, SkPaint const&) third_party/skia/src/core/SkDevice.cpp:188:15
+    #17 0x66d5ff in SkCanvas::onDrawImage(SkImage const*, float, float, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:2177:27
+    #18 0x661b70 in SkCanvas::drawImage(SkImage const*, float, float, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:1691:11
+    #19 0x854284 in draw<SkRecords::DrawImage> third_party/skia/src/core/SkRecordDraw.cpp:96:1
+    #20 0x854284 in operator()<SkRecords::DrawImage> third_party/skia/src/core/SkRecordDraw.h:62
+    #21 0x854284 in decltype ({parm#1}((SkRecords::NoOp)())) SkRecord::Record::visit<SkRecords::Draw&>(SkRecords::Draw&) const third_party/skia/src/core/SkRecord.h:165
+    #22 0x85243a in visit<SkRecords::Draw &> third_party/skia/src/core/SkRecord.h:42:28
+    #23 0x85243a in SkRecordDraw(SkRecord const&, SkCanvas*, SkPicture const* const*, SkDrawable* const*, int, SkBBoxHierarchy const*, SkPicture::AbortCallback*) third_party/skia/src/core/SkRecordDraw.cpp:52
+    #24 0x5f9d2f in SkBigPicture::playback(SkCanvas*, SkPicture::AbortCallback*) const third_party/skia/src/core/SkBigPicture.cpp:33:5
+    #25 0x67b2dd in SkCanvas::onDrawPicture(SkPicture const*, SkMatrix const*, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:2771:14
+    #26 0x67ab9f in SkCanvas::drawPicture(SkPicture const*, SkMatrix const*, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:2751:15
+    #27 0xafd3ea in drawPicture third_party/skia/include/core/SkCanvas.h:2128:15
+    #28 0xafd3ea in drawPicture third_party/skia/include/core/SkCanvas.h:2140
+    #29 0xafd3ea in SkPictureImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkPictureImageFilter.cpp:118
+    #30 0x731e30 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:213:40
+    #31 0x737390 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:514:41
+    #32 0xae7bed in SkMergeImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkMergeImageFilter.cpp:47:27
+    #33 0x731e30 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:213:40
+    #34 0x737390 in SkImageFilter::filterInput(int, SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:514:41
+    #35 0xa9854b in SkColorFilterImageFilter::onFilterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/effects/SkColorFilterImageFilter.cpp:65:39
+    #36 0x731e30 in SkImageFilter::filterImage(SkSpecialImage*, SkImageFilter::Context const&, SkIPoint*) const third_party/skia/src/core/SkImageFilter.cpp:213:40
+    #37 0x60aea4 in SkBitmapDevice::drawSpecial(SkSpecialImage*, int, int, SkPaint const&, SkImage*, SkMatrix const&) third_party/skia/src/core/SkBitmapDevice.cpp:550:33
+    #38 0x657b0d in SkCanvas::internalDrawDevice(SkBaseDevice*, int, int, SkPaint const*, SkImage*, SkMatrix const&) third_party/skia/src/core/SkCanvas.cpp:1237:25
+    #39 0x653a90 in SkCanvas::internalRestore() third_party/skia/src/core/SkCanvas.cpp:1125:19
+    #40 0x66f21b in ~AutoDrawLooper third_party/skia/src/core/SkCanvas.cpp:429:22
+    #41 0x66f21b in SkCanvas::onDrawBitmap(SkBitmap const&, float, float, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:2259
+    #42 0x663a83 in SkCanvas::drawBitmap(SkBitmap const&, float, float, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:1765:11
+    #43 0x5e9008 in RunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:47:13
+    #44 0x5e9008 in ReadAndRunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:66
+    #45 0x5e9008 in main skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:86
+    #46 0x7f92e2e8a82f in __libc_start_main /build/glibc-bfm8X4/glibc-2.23/csu/../csu/libc-start.c:291

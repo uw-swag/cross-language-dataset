@@ -1,0 +1,20 @@
+==3712169==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x616000000594 at pc 0x55acb8848a77 bp 0x7ffe7d9729f0 sp 0x7ffe7d9721b8
+READ of size 510 at 0x616000000594 thread T0
+    #0 0x55acb8848a76 in __asan_memcpy /b/s/w/ir/cache/builder/src/third_party/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x55acb8beaf55 in sk_careful_memcpy third_party/skia/include/private/SkMalloc.h:122:9
+    #2 0x55acb8beaf55 in read third_party/skia/src/core/SkReader32.h:100:9
+    #3 0x55acb8beaf55 in SkVertices::Decode(void const*, unsigned long) third_party/skia/src/core/SkVertices.cpp:457:12
+    #4 0x55acb8cbeac4 in create_vertices_from_buffer(SkReadBuffer&) third_party/skia/src/core/SkPictureData.cpp:379:19
+    #5 0x55acb8cbe602 in bool new_array_from_buffer<SkVertices const, SkVertices>(SkReadBuffer&, unsigned int, SkTArray<sk_sp<SkVertices const>, false>&, sk_sp<SkVertices> (*)(SkReadBuffer&)) third_party/skia/src/core/SkPictureData.cpp:398:20
+    #6 0x55acb8cbdb11 in SkPictureData::parseBufferTag(SkReadBuffer&, unsigned int, unsigned int) third_party/skia/src/core/SkPictureData.cpp:443:13
+    #7 0x55acb8cbfa7e in parseBuffer third_party/skia/src/core/SkPictureData.cpp:525:15
+    #8 0x55acb8cbfa7e in SkPictureData::CreateFromBuffer(SkReadBuffer&, SkPictInfo const&) third_party/skia/src/core/SkPictureData.cpp:494:16
+    #9 0x55acb8cb8407 in SkPicturePriv::MakeFromBuffer(SkReadBuffer&) third_party/skia/src/core/SkPicture.cpp:213:40
+    #10 0x55acb8d9610a in (anonymous namespace)::SkPictureImageFilterImpl::CreateProc(SkReadBuffer&) third_party/skia/src/effects/imagefilters/SkPictureImageFilter.cpp:86:19
+    #11 0x55acb8abd2cd in SkReadBuffer::readFlattenable(SkFlattenable::Type) third_party/skia/src/core/SkReadBuffer.cpp:428:15
+    #12 0x55acb89695d7 in SkFlattenable::Deserialize(SkFlattenable::Type, void const*, unsigned long, SkDeserialProcs const*) third_party/skia/src/core/SkFlattenable.cpp:144:40
+    #13 0x55acb88759f8 in Deserialize third_party/skia/include/core/SkImageFilter.h:149:17
+    #14 0x55acb88759f8 in RunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:32:38
+    #15 0x55acb88759f8 in ReadAndRunTestCase skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:66:3
+    #16 0x55acb88759f8 in main skia/tools/filter_fuzz_stub/filter_fuzz_stub.cc:86:10
+    #17 0x7ff6bf8131a2 in __libc_start_main (/lib64/libc.so.6+0x271a2)

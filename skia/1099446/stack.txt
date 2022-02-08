@@ -1,0 +1,18 @@
+==50070==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x607000000a04 at pc 0x55cc590178a7 bp 0x7ffc007a9ff0 sp 0x7ffc007a97b8
+READ of size 256 at 0x607000000a04 thread T0
+    #0 0x55cc590178a6 in __asan_memcpy /b/s/w/ir/cache/builder/src/third_party/llvm/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:22:3
+    #1 0x55cc598cd658 in SkData::PrivateNewWithCopy(void const*, unsigned long) third_party/skia/src/core/SkData.cpp:79:9
+    #2 0x55cc598cdd2d in SkData::MakeWithCopy(void const*, unsigned long) third_party/skia/src/core/SkData.cpp:107:12
+    #3 0x55cc5a8f955b in MakeRasterCopyPriv(SkPixmap const&, unsigned int) third_party/skia/src/image/SkImage_Raster.cpp:266:24
+    #4 0x55cc5a8fa72f in SkMakeImageFromRasterBitmapPriv(SkBitmap const&, SkCopyPixelsMode, unsigned int) third_party/skia/src/image/SkImage_Raster.cpp:338:20
+    #5 0x55cc5a8fa930 in SkMakeImageFromRasterBitmap(SkBitmap const&, SkCopyPixelsMode) third_party/skia/src/image/SkImage_Raster.cpp:352:12
+    #6 0x55cc5a8e2f94 in SkImage::MakeFromBitmap(SkBitmap const&) third_party/skia/src/image/SkImage.cpp:219:12
+    #7 0x55cc598323d5 in bitmap_as_image(SkBitmap const&) third_party/skia/src/core/SkCanvas.cpp:2101:12
+    #8 0x55cc598322e6 in SkCanvas::drawBitmap(SkBitmap const&, float, float, SkPaint const*) third_party/skia/src/core/SkCanvas.cpp:2105:21
+    #9 0x55cc59709005 in CFX_SkiaDeviceDriver::GetDIBits(fxcrt::RetainPtr<CFX_DIBitmap> const&, int, int) core/fxge/skia/fx_skia_device.cpp:2376:10
+    #10 0x55cc596407b1 in CFX_RenderDevice::GetDIBits(fxcrt::RetainPtr<CFX_DIBitmap> const&, int, int) core/fxge/cfx_renderdevice.cpp:724:27
+    #11 0x55cc5bb91801 in CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject*, CFX_Matrix const&) core/fpdfapi/render/cpdf_renderstatus.cpp:669:16
+    #12 0x55cc5bb8fcdd in CPDF_RenderStatus::RenderSingleObject(CPDF_PageObject*, CFX_Matrix const&) core/fpdfapi/render/cpdf_renderstatus.cpp:262:7
+    #13 0x55cc5bb8f8e1 in CPDF_RenderStatus::RenderObjectList(CPDF_PageObjectHolder const*, CFX_Matrix const&) core/fpdfapi/render/cpdf_renderstatus.cpp:238:5
+    #14 0x55cc5bb755b0 in CPDF_RenderContext::Render(CFX_RenderDevice*, CPDF_PageObject const*, CPDF_RenderOptions const*, CFX_Matrix const*) core/fpdfapi/render/cpdf_rendercontext.cpp:75:12
+    #15 0x55cc5bb75871 in CPDF_RenderContext::Render(CFX_RenderDevice*, CPDF_RenderOptions const*, CFX_Matrix const*) core/fpdfapi/render/cpdf_rendercontext.cpp:55:3
